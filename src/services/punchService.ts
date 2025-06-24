@@ -1,13 +1,13 @@
 import { api } from '@/lib/axios';
 
-export async function markPunch(token: string) {
-  const response = await api.post(
-    '/punches/punch',
-    {},
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
+interface PunchDto {
+  type: string;
+}
+
+export async function markPunch(token: string, dto: PunchDto) {
+  const response = await api.post('/punches', dto, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
   return response.data;
 }
 

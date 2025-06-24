@@ -11,9 +11,9 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const { accessToken } = await login({ username, password });
+      const { accessToken, user } = await login({ username, password });
       document.cookie = `accessToken=${accessToken}; path=/; max-age=3600`;
-      document.cookie = `username=${username};`;
+      document.cookie = `fullname=${user.fullname};`;
       window.location.href = '/dashboard';
     } catch (err) {
       alert('Login inválido');

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/NavbarComponent";
+import { Footer } from "@/components/FooterComponent";
 import { ReactQueryProviderClient } from "./ReactQueryProviderClient";
 import { useEffect, useState } from "react";
 
@@ -14,9 +15,14 @@ export function ClientLayoutWrapper({ children }: { children: React.ReactNode })
   }, [pathname]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       {showNavbar && <Navbar />}
-      <ReactQueryProviderClient>{children}</ReactQueryProviderClient>
-    </>
+
+      <div className="flex-grow">
+        <ReactQueryProviderClient>{children}</ReactQueryProviderClient>
+      </div>
+
+      <Footer />
+    </div>
   );
 }

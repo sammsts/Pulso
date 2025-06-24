@@ -3,25 +3,18 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react"; // ícones
 
 export function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
-  const [username, setUsername] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     document.cookie = "nomeUsuario=; Max-Age=0; path=/";
     router.push("/login");
   };
-
-  useEffect(() => {
-    const nome = Cookies.get("username");
-    setUsername(nome || null);
-  }, []);
 
   const navItems = [
     { label: "Início", href: "/dashboard" },
@@ -34,13 +27,8 @@ export function Navbar() {
     <header className="bg-gradient-to-r from-blue-50 to-white border-b shadow-md px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Saudações */}
-        <div className="text-gray-800 text-sm sm:text-lg font-medium">
-          Bem-vindo de volta
-          {username && (
-            <>
-              , <span className="font-semibold text-blue-600">{username}</span>
-            </>
-          )}
+        <div className="text-sm sm:text-lg font-bold text-blue-600">
+          Pulso
         </div>
 
         {/* Menu hamburger mobile */}
