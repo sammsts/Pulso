@@ -23,7 +23,7 @@ export default function MarcarPontoPage() {
     mutationFn: async () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("Usuário não autenticado");
-      await markPunch(token);
+      await markPunch(token, { type: localizacao ?? "default" });
     },
     onSuccess: () => {
       setMensagem("Ponto marcado com sucesso!");
@@ -71,20 +71,20 @@ export default function MarcarPontoPage() {
 
       <button
         onClick={() => mutation.mutate()}
-        disabled={mutation.isLoading}
+        disabled={mutation.status === "pending"}
         className={`w-full py-3 rounded text-white text-lg font-semibold ${
-          mutation.isLoading
+          mutation.status === "pending"
             ? "bg-gray-400"
             : "bg-green-600 hover:bg-green-700 transition"
         }`}
       >
-        {mutation.isLoading ? "Marcando..." : "Marcar Ponto"}
+        {mutation.status === "pending" ? "Marcando..." : "Marcar Ponto"}
       </button>
 
       {mensagem && (
         <p
           className={`mt-4 text-center text-sm ${
-            mutation.isError ? "text-red-600" : "text-green-600"
+            mutation.status === "error" ? "text-red-600" : "text-green-600"
           }`}
         >
           {mensagem}
