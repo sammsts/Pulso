@@ -1,7 +1,7 @@
 import { api } from '@/lib/axios';
 
 export async function getProfile(token: string) {
-  const response = await api.get('/users/me', {
+  const response = await api.get('/users', {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;

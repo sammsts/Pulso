@@ -16,6 +16,7 @@ export const config = {
     '/dashboard/:path*',
     '/historico/:path*',
     '/marcar-ponto/:path*',
-    '/profile/:path*'
+    '/profile/:path*',
+    '/relatorios/:path*'
   ],
 };

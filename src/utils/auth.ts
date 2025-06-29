@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie';
+
 export function logout() {
-  document.cookie = 'accessToken=; path=/; max-age=0';
+  Cookies.remove('accessToken');
   window.location.href = '/login';
 }
