@@ -25,7 +25,18 @@ export async function generateReport(
 
   const url = URL.createObjectURL(blob);
 
-  window.open(url, "_blank");
+  const wantToDownload = window.confirm("Deseja fazer download do relatório? Clique 'Cancelar' para visualizar no navegador.");
+
+  if (wantToDownload) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "relatorioDePontos.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    window.open(url, "_blank");
+  }
 
   setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
