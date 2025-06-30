@@ -34,8 +34,8 @@ export default function LoginPage() {
         <h3 className="text-1xl text-gray-600 font-bold mb-8 text-center">Login</h3>
 
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Usuário"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="border border-gray-300 p-3 rounded mb-4 w-full focus:outline-blue-500"
