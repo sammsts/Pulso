@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TimePunch Frontend
 
-## Getting Started
+This is the frontend application for the **TimePunch** system — a real-time employee punch clock system that allows users to register, view, edit, and delete time punches either automatically (using geolocation) or manually.
 
-First, run the development server:
+## 🌐 Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [React Query](https://tanstack.com/query/latest)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [OpenCage Geocoder API](https://opencagedata.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Automatic punch with geolocation and reverse geocoding
+- Manual punch entry with time and type (in/out)
+- Edit existing punches
+- Delete punches
+- View punches of the current day
+- UI feedback with loading and error states
+- Token-based authentication via cookies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧠 Architecture Notes
 
-To learn more about Next.js, take a look at the following resources:
+- Uses **React Query** for efficient data fetching and caching.
+- Punch registration API calls:
+  - `POST /punches` – Register a new punch
+  - `PUT /punches/{id}` – Update an existing punch
+  - `DELETE /punches/{id}` – Delete a punch
+- Geolocation is retrieved via the **browser's Geolocation API** and reverse geocoded using the **OpenCage API**.
+- Authentication token (`accessToken`) is stored and accessed via **cookies**, using the [`js-cookie`](https://www.npmjs.com/package/js-cookie) library.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
